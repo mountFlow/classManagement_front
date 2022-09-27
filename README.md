@@ -61,6 +61,12 @@ npm run serve
 
 ### 2.后端核心
 
+- 后端通过对每张数据表的字段一一建立建立pojo对象（遇到驼峰和_冲突的使用`resultmap`映射更名）
+- 而后为每个pojo对象写出所需的SQL语句，作为注解置于mapper中
+- 在`utils`类建立`sqlsessionfactory`,从而建立`sqlsession`读取`mapper`中的SQL语句
+- 通过`servlet`将读取后的`lists`数据转为`json`，通过`response`传给前端
+
+
 #### 2.1 表对象
 后端使用Mybatis链接数据库，在这个过程中，需要建立与所有的表的字段一一对应的表的对象，下面展示classroom表的对应表对象代码
 ```java
