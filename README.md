@@ -17,11 +17,18 @@ npm run serve
 技术栈:vue、vue-cil、elementUI、axios、Java mybatis、servlet
 
 - 登录界面：
+
 ![image](https://user-images.githubusercontent.com/84088980/192585171-a775373f-716c-452a-bad4-59afb844cc3f.png)
 ![image](https://user-images.githubusercontent.com/84088980/192585201-84f3a0c0-3520-4693-a1e6-b85d4b0c9095.png)
+
 - 学生管理模块：
+
 ![image](https://user-images.githubusercontent.com/84088980/192585256-474da228-9807-4761-b99a-a153a9a0b53d.png)
+
 - 教室管理模块：
+
 ![image](https://user-images.githubusercontent.com/84088980/192585008-fcf847ef-b770-4b85-8715-278f3590ef5d.png)
+
 - 课室借用申请管理模块
+
 ![image](https://user-images.githubusercontent.com/84088980/192585063-28057ddb-d1cf-449b-80cf-2a85cb0a74e8.png)
