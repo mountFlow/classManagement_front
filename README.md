@@ -32,3 +32,9 @@ npm run serve
 - 课室借用申请管理模块
 
 ![image](https://user-images.githubusercontent.com/84088980/192585063-28057ddb-d1cf-449b-80cf-2a85cb0a74e8.png)
+
+- 授课管理模块
+
+![image](https://user-images.githubusercontent.com/84088980/192585874-f21a3f7b-64d1-48e7-a626-5701a832fbf9.png)
+
+- 
