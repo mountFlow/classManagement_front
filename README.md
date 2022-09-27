@@ -45,6 +45,9 @@ npm run serve
 ## 三.代码分析
 
 ### 1.前端核心
+
+#### 1.1 项目结构
+
 - 前端的自定义菜单组件
 
 ![image](https://user-images.githubusercontent.com/84088980/192586926-b9468f8f-2921-420f-a6fa-1388d3949abc.png)
@@ -59,6 +62,89 @@ npm run serve
 
 ![image](https://user-images.githubusercontent.com/84088980/192586802-5b684d0f-2d79-4973-986a-9e10d544f4b4.png)
 
+#### 1.2 传值
+- 你会发现我将ajax的请求封装在了api中
+```js
+deleteById(row) {
+      this.$confirm(
+        "此操作将永久删除这条课室使用信息,将通知该学生，是否继续?",
+        "提示",
+        {
+          confirmButtonText: "确定",
+          cancelButtonText: "取消",
+          type: "warning",
+        }
+      ).then(() => {
+        //1.发送ajax请求删除数据
+        deleteByIdApi(row.id).then((resp) => {
+          if (resp == "success") {
+            //5.添加成功则关闭对话框，重新查询数据,弹出提示添加成功消息框
+            this.dialogVisible = false;
+            this.selectAll();
+            this.$message({
+              message: "删除成功",
+              type: "success",
+            });
+          } else {
+            this.$message.error("删除失败！请取消对应授课老师的该授课信息");
+          }
+        });
+      });
+    },
+    ```
+    - 在`src/utils`查看该api，结构如下：
+    ```js
+    export function deleteByIdApi(param){
+    return request({
+        url:"classroomAvailable/deleteById",
+        method:'post',
+        data:param,
+    })
+}
+```
+- `request`是`request.js`封装的方法,在该js可以设置axios请求的地址：
+```js
+import axios from 'axios'
+
+const baseURL = 'http://localhost:8080/brand_case_war_exploded/'
+// 创建 axios 实例
+const service = axios.create({
+    baseURL: baseURL, // 请求地址前缀，将自动加在 url 前面
+    timeout: 6000 // 请求超时时间
+})
+
+// axios请求拦截器
+service.interceptors.request.use(config => {
+    // if (localStorage.getItem('loginToken')) {
+    //     // 请求统一设置header
+    //     config.headers.Authorization = localStorage.getItem('loginToken')
+    // }
+    return config
+// }, error => {
+//     return Promise.reject(error)
+// 
+}
+)
+
+// axios响应拦截器
+service.interceptors.response.use(response => {
+    return response.data
+}
+// , error => {
+//     // console.log('看一看', error.response)
+//     const { status } = error.response
+//     if (status === 401) { // token失效
+//         Message.error('token失效，请重新登录')
+//         // 清除token
+//         localStorage.removeItem('loginToken')
+//         router.push('/')
+//     }
+//     return Promise.reject(error)
+// }
+)
+
+export default service 
+```
 ### 2.后端核心
 
 - 后端通过对每张数据表的字段一一建立建立pojo对象（遇到驼峰和_冲突的使用`resultmap`映射更名）
