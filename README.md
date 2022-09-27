@@ -61,7 +61,7 @@ npm run serve
 
 ### 2.后端核心
 
-#### - 表对象
+#### 2.1 表对象
 后端使用Mybatis链接数据库，在这个过程中，需要建立与所有的表的字段一一对应的表的对象，下面展示classroom表的对应表对象代码
 ```java
 package pojo;
@@ -146,7 +146,7 @@ public class Classroom {
     }
 }
 ```
-#### - Mapper对象
+#### 2.2 Mapper对象
 每个与之对应的表对象都要有对应的Mapper对象存放相关的处理给表的Sql语句，下面是classroom表对象对应的classroomMapper对象的示例代码：
 
 ```java
@@ -207,7 +207,7 @@ public interface ClassMapper {
 }
 ```
 
-#### - Service对象
+#### 2.3 Service对象
    每个表的Sql语句的读取需要通过建立SqlSession来进行，所以每个表需要有一个Service对象进行sql语句的session对象的的建立（以classroom表为例）：
    
    
@@ -397,10 +397,10 @@ public class ClassroomServiceImpl implements ClassroomService {
 }
 ```
 
-#### - Service对象
+#### 2.4 Servlet对象
 
 
-通过Service对象，前端能将读取的需求和参数传给后端，后端能将通过MyBatis得到的返回集合转成字符串传回前端，下面是classroom Service 的实例代码：
+通过Servlet对象，前端能将读取的需求和参数传给后端，后端能将通过MyBatis得到的返回集合转成字符串传回前端，下面是classroom Service 的实例代码：
 
 ```java
 package servlet;
@@ -598,3 +598,5 @@ public class ClassroomServlet extends BaseServlet {
 
 }
 ```
+### 四、数据库
+![image](https://user-images.githubusercontent.com/84088980/192589102-ad511260-6fd3-4451-bca2-c00096c17409.png)
