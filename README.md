@@ -91,9 +91,9 @@ deleteById(row) {
         });
       });
     },
-    ```
-    - 在`src/utils`查看该api，结构如下：
-    ```js
+```
+- 在`src/utils`查看该api，结构如下：
+```js
     export function deleteByIdApi(param){
     return request({
         url:"classroomAvailable/deleteById",
